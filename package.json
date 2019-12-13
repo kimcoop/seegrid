@@ -1,0 +1,39 @@
+{
+    "name": "seegrid",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "module": "main.js",
+    "scripts": {
+        "test": "jest",
+        "dev": "NODE_ENV=development nodemon --exec babel-node src/main.js",
+        "build:staging": "NODE_ENV=staging babel src --out-dir dist",
+        "build:production": "NODE_ENV=production babel src --out-dir dist",
+        "serve": "node dist/server.js"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "pretty-quick --staged"
+        }
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@babel/cli": "^7.7.5",
+        "@babel/core": "^7.7.5",
+        "@babel/node": "^7.7.4",
+        "@babel/plugin-proposal-export-default-from": "^7.7.4",
+        "@babel/plugin-proposal-optional-chaining": "^7.7.5",
+        "@babel/preset-env": "^7.7.6",
+        "babel-jest": "^24.9.0",
+        "babel-plugin-module-resolver": "^4.0.0",
+        "dotenv": "^8.2.0",
+        "husky": "^3.1.0",
+        "jest": "^24.9.0",
+        "nodemon": "^2.0.2",
+        "prettier": "^1.19.1",
+        "pretty-quick": "^2.0.1",
+        "winston": "^3.2.1"
+    }
+}
