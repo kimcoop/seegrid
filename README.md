@@ -1,25 +1,25 @@
-## Deck of Cards
+# Deck of Cards
 
-### Overview
+## Overview
 
 Contained within this repo is two classes, Deck and Card, to model a deck of cards. A logging utility around [winston logger](https://github.com/winstonjs/winston) has been included for convenience in `utils/logger.js`.
 
-### Technologies
+## Technologies
 
 ### Language
 
 -   JavaScript (node v12.2.0)
--   es.next features transpiled for the current node version with Babel
+-   es.next features transpiled for the current node version with [Babel](https://babeljs.io/)
 
 ### Code Quality
 
--   Prettier
--   ESLint
--   Husky with pretty-quick in a pre-commit hook to ensure linting standards are met prior to commit
+-   [Prettier](https://prettier.io/)
+-   [ESLint](https://eslint.org/)
+-   [Husky](https://github.com/typicode/husky) pre-commit hook to check staged files against linting standards prior to commit
 
 ### Tests
 
--   Jest as the unit testing framework
+-   [Jest](https://jestjs.io/) as the unit testing framework
 -   100% coverage
 
 ### Useful Commands
@@ -63,7 +63,7 @@ const card = new Card(Suit.DIAMONDS, 4)
 Logger.info('New Card: %s', card.pretty)
 ```
 
-For development mode, run the previous example from the command line with npm@5.2+ with:
+For development mode, run the previous example from the command line with npm@5.2+:
 
 ```
 $ npx nodemon --exec babel-node src/main.js
