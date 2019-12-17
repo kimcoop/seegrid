@@ -91,21 +91,14 @@ describe('Deck', () => {
     })
 
     describe('`shuffle`', () => {
-        it('should change order of cards', () => {
+        it('calls `Math.random` N times, where N = one less than the number of cards', () => {
+            const spy = jest.spyOn(Math, 'random')
             const deck = new Deck()
 
-            const getValues = cards => cards.map(card => card.value)
-            const values1 = getValues(deck.cards)
-
+            expect(spy).not.toHaveBeenCalled()
             deck.shuffle()
-            const values2 = getValues(deck.cards)
 
-            deck.shuffle()
-            const values3 = getValues(deck.cards)
-
-            expect(values2).not.toEqual(values1)
-            expect(values3).not.toEqual(values1)
-            expect(values3).not.toEqual(values2)
+            expect(spy).toHaveBeenCalledTimes(deck.cards.length - 1)
         })
     })
 
