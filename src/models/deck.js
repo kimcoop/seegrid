@@ -34,6 +34,8 @@ export default class Deck {
         return this.cards.length > 0
     }
 
+    // if there are no cards remaining in the deck, return null;
+    // otherwise, remove and return the first card in the deck
     dealCard() {
         if (!this.hasCards()) {
             return null

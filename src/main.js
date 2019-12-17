@@ -1,8 +1,4 @@
-import dotenv from 'dotenv'
-
 import { Deck } from 'models'
-
-dotenv.config({ path: `./.env.${process.env.NODE_ENV}` })
 
 const deck = new Deck()
 

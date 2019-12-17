@@ -48,6 +48,7 @@ export default class Card {
         return RoyalValue.KING
     }
 
+    // returns unicode character for each suit
     get prettySuit() {
         return {
             [Suit.SPADES]: '♠',
