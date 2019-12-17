@@ -5,26 +5,29 @@ export default class Card {
     constructor(suit, value) {
         if (!Card.isValidSuit(suit)) {
             throw new Error(`Invalid suit: ${suit}`)
-            return
         }
 
         if (!Card.isValidValue(value)) {
             throw new Error(`Invalid value: ${value}`)
-            return
         }
 
         this.suit = suit
         this.value = value
     }
 
+    // let only specified suits be considered valid
     static isValidSuit(suit) {
         return Suits.includes(suit)
     }
 
+    // let int values in the range [1, 13] inclusive be considered valid
     static isValidValue(value) {
         return Number.isInteger(Number(value)) && value >= 1 && value <= 13
     }
 
+    // for integers, just print `value` as-is;
+    // for royal values (Ace, Jack, Queen, King),
+    // grab the value formatted for pretty display
     get prettyValue() {
         if (this.value > 1 && this.value <= 10) {
             return this.value
@@ -54,10 +57,12 @@ export default class Card {
         }[this.suit]
     }
 
+    // returns a string (useful for debugging)
     get pretty() {
         return `${this.prettyValue} ${this.prettySuit}`
     }
 
+    // prints prettified card info (useful for debugging)
     prettyPrint() {
         Logger.info(this.pretty)
     }

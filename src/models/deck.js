@@ -4,24 +4,30 @@ import { Logger } from 'utils'
 
 export default class Deck {
     constructor() {
-        this.cards = Suits.reduce((acc, suit) => {
-            let cardsInSuit = []
-            // TODO: break into own fn
-            for (let i = 1; i <= 13; i++) {
-                cardsInSuit.push(new Card(suit, i))
-            }
-
-            return [...acc, ...cardsInSuit]
-        }, [])
+        this.cards = Suits.reduce(
+            (acc, suit) => [...acc, ...Deck.initCardsForSuit(suit)],
+            []
+        )
     }
 
-    shuffle() {
-        // TODO
-        // Shuffle returns no value, but results in the cards in the deck being
-        // randomly permuted. Do not use a library-provided shuffle function.
-        // You may use library-provided random number generators
+    static initCardsForSuit(suit) {
+        const cardsForSuit = []
 
-        this.cards.sort(() => Math.random() - 0.5)
+        for (let i = 1; i <= 13; i += 1) {
+            cardsForSuit.push(new Card(suit, i))
+        }
+
+        return cardsForSuit
+    }
+
+    // Randomize array in place using the Durstenfeld shuffle algorithm
+    // http://en.wikipedia.org/wiki/Fisher-Yates_shuffle#The_modern_algorithm
+    // https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array/12646864#12646864
+    shuffle() {
+        for (let i = this.cards.length - 1; i > 0; i -= 1) {
+            const j = Math.floor(Math.random() * (i + 1))
+            ;[this.cards[i], this.cards[j]] = [this.cards[j], this.cards[i]]
+        }
     }
 
     hasCards() {
@@ -36,6 +42,7 @@ export default class Deck {
         return this.cards.shift()
     }
 
+    // prints prettified card info (useful for debugging)
     prettyPrint(options = { condense: false }) {
         if (options?.condense) {
             Logger.info(

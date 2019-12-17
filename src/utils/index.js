@@ -1,1 +1,2 @@
-export Logger from './logger'
+// eslint-disable-next-line
+export { default as Logger } from './logger'

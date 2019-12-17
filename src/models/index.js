@@ -1,2 +1,2 @@
-export Card from './card'
-export Deck from './deck'
+export { default as Card } from './card'
+export { default as Deck } from './deck'
