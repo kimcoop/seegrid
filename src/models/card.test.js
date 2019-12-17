@@ -115,15 +115,5 @@ describe('Card', () => {
                 })
             })
         })
-
-        describe('`prettyPrint`', () => {
-            it('should invoke `info` method on `Logger`', () => {
-                expect(mockInfo).not.toHaveBeenCalled()
-                const card = new Card(Suit.HEARTS, 1)
-                card.prettyPrint()
-
-                expect(mockInfo).toHaveBeenCalledWith(card.pretty)
-            })
-        })
     })
 })

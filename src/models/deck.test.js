@@ -12,10 +12,6 @@ jest.mock('utils/logger', () => {
 })
 
 describe('Deck', () => {
-    afterEach(() => {
-        jest.clearAllMocks()
-    })
-
     describe('constructor', () => {
         it('should set `cards` to be array of 52 Cards', () => {
             const deck = new Deck()
@@ -140,21 +136,12 @@ describe('Deck', () => {
         })
     })
 
-    describe('`prettyPrint`', () => {
-        it('should invoke `info` method on `Logger`', () => {
-            expect(mockInfo).not.toHaveBeenCalled()
+    describe('`pretty`', () => {
+        it('should return array of all cards mapped to `pretty`', () => {
             const deck = new Deck()
-            deck.prettyPrint()
+            const { pretty } = deck
 
-            expect(mockInfo).toHaveBeenCalled()
-        })
-
-        it('should invoke `info` method on `Logger` with `condense` option', () => {
-            expect(mockInfo).not.toHaveBeenCalled()
-            const deck = new Deck()
-            deck.prettyPrint({ condense: true })
-
-            expect(mockInfo).toHaveBeenCalled()
+            expect(pretty).toEqual(deck.cards.map(card => card.pretty))
         })
     })
 })

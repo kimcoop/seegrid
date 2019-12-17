@@ -1,5 +1,14 @@
 module.exports = {
-    presets: ['@babel/preset-env'],
+    presets: [
+        [
+            '@babel/preset-env',
+            {
+                targets: {
+                    node: true,
+                },
+            },
+        ],
+    ],
     only: ['./src'],
     plugins: [
         '@babel/plugin-proposal-export-default-from',

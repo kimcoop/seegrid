@@ -1,4 +1,3 @@
-import { Logger } from 'utils'
 import { Suit, Suits, RoyalValue } from 'constants/cards'
 
 export default class Card {
@@ -60,11 +59,6 @@ export default class Card {
 
     // returns a string (useful for debugging)
     get pretty() {
-        return `${this.prettyValue} ${this.prettySuit}`
-    }
-
-    // prints prettified card info (useful for debugging)
-    prettyPrint() {
-        Logger.info(this.pretty)
+        return `${this.prettyValue}${this.prettySuit}`
     }
 }

@@ -1,6 +1,5 @@
 import { Card } from 'models'
 import { Suits } from 'constants/cards'
-import { Logger } from 'utils'
 
 export default class Deck {
     constructor() {
@@ -44,16 +43,7 @@ export default class Deck {
         return this.cards.shift()
     }
 
-    // prints prettified card info (useful for debugging)
-    prettyPrint(options = { condense: false }) {
-        if (options?.condense) {
-            Logger.info(
-                `${this.cards.length} cards in deck:`,
-                this.cards.map(card => card.pretty)
-            )
-        } else {
-            Logger.info(`${this.cards.length} cards in deck:`)
-            this.cards.map(card => card.prettyPrint())
-        }
+    get pretty() {
+        return this.cards.map(card => card.pretty)
     }
 }
